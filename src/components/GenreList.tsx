@@ -16,7 +16,8 @@ import useGameQuery from "../store";
 
 const GenreList = () => {
 
-  const {setGenreId, gameQuery} = useGameQuery()
+  const selectedGenreId = useGameQuery(s => s.gameQuery.genreId)
+  const setGenreId = useGameQuery(s => s.setGenreId)
   const { data, isLoading, error } = useGenres();
 
   if (error) return null;
@@ -41,7 +42,7 @@ const GenreList = () => {
               <Button
                 whiteSpace="normal"
                 textAlign="left"
-                fontWeight={genre.id === gameQuery?.genreId ? "bold" : "normal"}
+                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 onClick={() => setGenreId(genre.id)}
                 fontSize="md"
                 variant="link"

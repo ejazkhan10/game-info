@@ -6,7 +6,8 @@ import useGameQuery from "../store";
 const SortSelector = () => {
 
 
-  const {gameQuery, setSortOrder} = useGameQuery()
+  const sortOrder = useGameQuery(s => s.gameQuery.sortOrder)
+  const setSortOrder = useGameQuery(s => s.setSortOrder)
   const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date added" },
@@ -16,7 +17,7 @@ const SortSelector = () => {
     { value: "-rating", label: "Average rating" },
   ];
 
-  const currentSortOrder = sortOrders.find(order => order.value === gameQuery.sortOrder);
+  const currentSortOrder = sortOrders.find(order => order.value === sortOrder);
 
   return (
     <Menu>
