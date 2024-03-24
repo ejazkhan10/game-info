@@ -1,4 +1,4 @@
-import { Box, Flex, GridItem, Show } from "@chakra-ui/react"
+import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react"
 import useGameQuery from "../store"
 import GameGrid from "../components/GameGrid"
 import GameHeading from "../components/GameHeading"
@@ -11,7 +11,16 @@ const HomePage = () => {
     const {gameQuery} = useGameQuery()
 
     return (
-        <>
+      <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`,
+      }}
+      templateColumns={{
+        base: '1fr',
+        lg: '250px 1fr'
+      }}
+    >
         <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList  />
@@ -29,7 +38,7 @@ const HomePage = () => {
         </Box>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
-      </>
+      </Grid>
     )
 }
 

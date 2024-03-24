@@ -1,6 +1,9 @@
-import { Button, Heading, Spinner,Text} from "@chakra-ui/react"
+import { Button, GridItem, Heading, SimpleGrid, Spinner,Text} from "@chakra-ui/react"
 import { useState } from "react"
 import { useLocation, useParams, useSearchParams } from "react-router-dom"
+import CriticScore from "../components/CriticScore"
+import DefinitionItem from "../components/DefinitionItem"
+import GameAttributes from "../components/GameAttributes"
 import useGame from "../hooks/useGame"
 
 const GameDetail = () => {
@@ -25,12 +28,15 @@ const GameDetail = () => {
   if (isLoading) return <Spinner/>
 
     return (
-        <>
-        <Heading fontSize="2xl" marginTop={9} marginBottom={3}>
+      <>
+        <Heading>
         {data?.name}
         </Heading>
         <Text>{text_expanded ? data?.description_raw : data?.description_raw.substring(0, 100) + "..."}</Text>
         <Button onClick={() => set_text_expanded(!text_expanded)}> {text_expanded ? "Show Less": "Show More"}</Button>
+
+
+        <GameAttributes game={data}/>
         </>
     )
 }
