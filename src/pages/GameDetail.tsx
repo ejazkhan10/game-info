@@ -1,10 +1,10 @@
-import { Button, GridItem, Heading, SimpleGrid, Spinner,Text} from "@chakra-ui/react"
+import { Button, Heading, Spinner, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import { useLocation, useParams, useSearchParams } from "react-router-dom"
-import CriticScore from "../components/CriticScore"
-import DefinitionItem from "../components/DefinitionItem"
 import GameAttributes from "../components/GameAttributes"
+import GameTrailer from "../components/GameTrailer"
 import useGame from "../hooks/useGame"
+import useGameTrailers from "../hooks/useGameTrailers"
 
 const GameDetail = () => {
 
@@ -37,6 +37,8 @@ const GameDetail = () => {
 
 
         <GameAttributes game={data}/>
+
+        <GameTrailer gameId={data?.id}/>
         </>
     )
 }
