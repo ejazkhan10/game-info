@@ -2,6 +2,7 @@ import { Button, Heading, Spinner, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import { useLocation, useParams, useSearchParams } from "react-router-dom"
 import GameAttributes from "../components/GameAttributes"
+import GameScreenShots from "../components/GameScreenShots"
 import GameTrailer from "../components/GameTrailer"
 import useGame from "../hooks/useGame"
 import useGameTrailers from "../hooks/useGameTrailers"
@@ -39,6 +40,7 @@ const GameDetail = () => {
         <GameAttributes game={data}/>
 
         <GameTrailer gameId={data?.id}/>
+        <GameScreenShots gameId={data?.id}/>
         </>
     )
 }
