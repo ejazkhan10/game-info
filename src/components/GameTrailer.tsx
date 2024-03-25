@@ -12,7 +12,7 @@ const GameTrailer = ({gameId}: Props) => {
     if(error) return null
     if(isLoading) return <Spinner/>
     return first ? (
-        <video src={first?.data[480]}
+        <video src={first?.data["480"]}
         poster={first?.preview}
         controls
         />

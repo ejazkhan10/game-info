@@ -3,13 +3,20 @@ import logo from '../assets/logo.webp';
 import ColorModeSwitch from './ColorModeSwitch';
 import SearchInput from './SearchInput';
 import useGameQuery from '../store';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 
 
 
 const NavBar = () => {
 
+
   const  setSearch = useGameQuery(s=> s.setSearchText)
+  const navigate = useNavigate()
+  const searchInput = useCallback((text:string) => {
+    setSearch(text)
+    navigate("/")
+  }, [setSearch])
   return (
     <HStack padding='10px'>
           <Link to={"/"}>
@@ -17,7 +24,7 @@ const NavBar = () => {
       <Image src={logo} boxSize='60px'/>
 
           </Link>
-      <SearchInput onSearch={setSearch} />
+      <SearchInput onSearch={searchInput} />
       <ColorModeSwitch />
     </HStack>
   )
